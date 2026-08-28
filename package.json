@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ingest": "node ingestion/ingest.js",
+    "eval:baseline": "node eval/run-eval.js",
+    "eval:tables": "node eval/run-eval.js \"After Table Handling\"",
+    "eval:hybrid": "node eval/run-eval.js \"After Hybrid Retrieval\"",
+    "eval:final": "node eval/run-eval.js \"After Citation + Refusal Logic\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,0 +1,379 @@
+{
+  "meta": {
+    "total_questions": 40,
+    "categories": {
+      "exact_lookup": 15,
+      "synthesis": 15,
+      "refusal": 10
+    },
+    "source_docs": [
+      "spec-sheets.md",
+      "pricing-table.md",
+      "financing-options.md",
+      "utility-incentives.md"
+    ],
+    "notes": "Built before any ingestion/retrieval code exists. This is the ground truth every later pipeline change gets measured against."
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the wattage of the XR-400 panel?",
+      "expected_answer": "400W",
+      "source_doc": ["spec-sheets.md"],
+      "source_section": ["Solar Panels table"]
+    },
+    {
+      "id": "q02",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the efficiency rating of the XR-450B panel?",
+      "expected_answer": "22.1%",
+      "source_doc": ["spec-sheets.md"],
+      "source_section": ["Solar Panels table"]
+    },
+    {
+      "id": "q03",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What warranty comes with the PowerCell-13X battery?",
+      "expected_answer": "12 years, or 80% capacity retention",
+      "source_doc": ["spec-sheets.md"],
+      "source_section": ["Battery Storage table"]
+    },
+    {
+      "id": "q04",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the unit price of the SI-8000 inverter?",
+      "expected_answer": "$1,680",
+      "source_doc": ["spec-sheets.md"],
+      "source_section": ["Inverters table"]
+    },
+    {
+      "id": "q05",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "How many panels are included in the Standard package?",
+      "expected_answer": "18 panels",
+      "source_doc": ["pricing-table.md"],
+      "source_section": ["Standard Packages table"]
+    },
+    {
+      "id": "q06",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the price of the Premium+Storage package before incentives?",
+      "expected_answer": "$43,700",
+      "source_doc": ["pricing-table.md"],
+      "source_section": ["Standard Packages table"]
+    },
+    {
+      "id": "q07",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "How much does the EV charger add-on cost?",
+      "expected_answer": "$1,100 (Level 2, installed)",
+      "source_doc": ["pricing-table.md"],
+      "source_section": ["À La Carte / Per-Watt Pricing table"]
+    },
+    {
+      "id": "q08",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What discount does Meridian offer for paying in full cash at signing?",
+      "expected_answer": "5% discount, not combinable with financing offers",
+      "source_doc": ["pricing-table.md"],
+      "source_section": ["Price Match & Discounts"]
+    },
+    {
+      "id": "q09",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the APR range for a 10-year solar loan?",
+      "expected_answer": "5.99% - 7.49%",
+      "source_doc": ["financing-options.md"],
+      "source_section": ["2. Solar Loan"]
+    },
+    {
+      "id": "q10",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "How much do solar lease payments typically escalate each year?",
+      "expected_answer": "1.5% - 2.9% annually",
+      "source_doc": ["financing-options.md"],
+      "source_section": ["3. Solar Lease"]
+    },
+    {
+      "id": "q11",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the on-peak electricity rate under Cascade Power & Light's time-of-use schedule?",
+      "expected_answer": "$0.34/kWh (4 PM - 9 PM daily)",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["Time-of-Use Rate Schedule"]
+    },
+    {
+      "id": "q12",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the flat, non-time-of-use residential electricity rate?",
+      "expected_answer": "$0.21/kWh",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["Time-of-Use Rate Schedule"]
+    },
+    {
+      "id": "q13",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the state rebate amount for a household earning under $75,000/year?",
+      "expected_answer": "$2,500 flat rebate",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["State Rebate Program table"]
+    },
+    {
+      "id": "q14",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "How long does permit approval typically take?",
+      "expected_answer": "2-6 weeks (jurisdiction-dependent)",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["Interconnection & Permitting Timeline"]
+    },
+    {
+      "id": "q15",
+      "category": "exact_lookup",
+      "expected_behavior": "answer",
+      "question": "What is the minimum credit score to qualify for a Meridian solar loan?",
+      "expected_answer": "620+ (best rates require 720+)",
+      "source_doc": ["financing-options.md"],
+      "source_section": ["2. Solar Loan"]
+    },
+    {
+      "id": "q16",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "If a customer leases a Premium+Storage system instead of buying it, are they still eligible for the state rebate?",
+      "expected_answer": "No. Leasing means the leasing company owns the system, and the state rebate explicitly excludes lease and PPA customers since they don't own the system.",
+      "source_doc": ["pricing-table.md", "financing-options.md", "utility-incentives.md"],
+      "source_section": ["Standard Packages table", "3. Solar Lease", "State Rebate Program"]
+    },
+    {
+      "id": "q17",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Which battery is required for whole-home backup on a standard 200A panel, and which package includes it by default?",
+      "expected_answer": "The PowerCell-13X is the only battery rated for whole-home backup on a standard 200A panel, and it's included by default in the Premium+Storage package.",
+      "source_doc": ["spec-sheets.md", "pricing-table.md"],
+      "source_section": ["Battery Storage table", "Standard Packages table"]
+    },
+    {
+      "id": "q18",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "If a customer finances the Standard package with a solar loan, do they receive both the federal tax credit and the state rebate?",
+      "expected_answer": "Yes to both. A solar loan means the customer owns the system, so they receive the federal incentive directly, and the state rebate is explicitly stackable with financing (loan or cash).",
+      "source_doc": ["financing-options.md", "utility-incentives.md"],
+      "source_section": ["2. Solar Loan", "Federal Incentive", "State Rebate Program"]
+    },
+    {
+      "id": "q19",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Why might a customer on the time-of-use rate plan want to add battery storage?",
+      "expected_answer": "Solar production peaks midday, which falls in the mid-peak pricing window, while the most expensive electricity (on-peak, $0.34/kWh) is 4-9 PM. A battery lets them store midday solar and use it during the expensive on-peak window instead of exporting it at the lower mid-peak credit rate.",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["Time-of-Use Rate Schedule"]
+    },
+    {
+      "id": "q20",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Roughly how much combined value would the federal incentive and state rebate provide a customer earning $60,000/year who buys the Starter package in cash?",
+      "expected_answer": "About $7,570 combined — roughly $5,070 from the illustrative 30% federal credit on the $16,900 package price, plus a $2,500 state rebate (since $60,000/year falls under the $75,000 threshold).",
+      "source_doc": ["pricing-table.md", "utility-incentives.md"],
+      "source_section": ["Standard Packages table", "Federal Incentive", "State Rebate Program table"]
+    },
+    {
+      "id": "q21",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Is a battery DC-coupled or AC-coupled when paired with the microinverter option?",
+      "expected_answer": "AC-coupled. Batteries are DC-coupled with SI-series string inverters and AC-coupled when paired with MI-400 microinverters.",
+      "source_doc": ["spec-sheets.md"],
+      "source_section": ["Inverters table notes", "Battery Storage table notes"]
+    },
+    {
+      "id": "q22",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Which financing options mean the customer does not receive the federal tax credit directly?",
+      "expected_answer": "Solar lease and PPA. In both cases a third party owns the system and claims the credit instead of the customer.",
+      "source_doc": ["financing-options.md", "utility-incentives.md"],
+      "source_section": ["3. Solar Lease", "4. Power Purchase Agreement (PPA)", "Federal Incentive"]
+    },
+    {
+      "id": "q23",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Which package uses the XR-450B panel by default, and how much more does that panel cost per unit than the XR-450 used in the standard Standard package?",
+      "expected_answer": "The Standard+ package uses the XR-450B. It costs $410/panel versus $345/panel for the XR-450 — $65 more per panel.",
+      "source_doc": ["pricing-table.md", "spec-sheets.md"],
+      "source_section": ["Standard Packages table", "À La Carte / Per-Watt Pricing table", "Solar Panels table"]
+    },
+    {
+      "id": "q24",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "For a roof with partial shading and multiple orientations, which inverter setup is recommended, and what does it add to the cost per panel?",
+      "expected_answer": "Microinverters (MI-400) are recommended, since panel-level MPPT avoids whole-string output loss from shading. They add $95/panel over the default string inverter.",
+      "source_doc": ["spec-sheets.md", "pricing-table.md"],
+      "source_section": ["Inverters table notes", "À La Carte / Per-Watt Pricing table"]
+    },
+    {
+      "id": "q25",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Can a customer using a Power Purchase Agreement (PPA) also claim the state rebate?",
+      "expected_answer": "No. PPA customers don't own the system, and the state rebate is not available to lease or PPA customers for that reason.",
+      "source_doc": ["financing-options.md", "utility-incentives.md"],
+      "source_section": ["4. Power Purchase Agreement (PPA)", "State Rebate Program"]
+    },
+    {
+      "id": "q26",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Roughly how long does the full process take, from signed contract to legally turning the system on, for a Standard package?",
+      "expected_answer": "Roughly 6-14 weeks total: permit filing (1-2 wk) + permit approval (2-6 wk) + installation (1-2 days) + final inspection (1-2 wk) + utility interconnection/PTO approval (2-4 wk).",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["Interconnection & Permitting Timeline"]
+    },
+    {
+      "id": "q27",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "A customer wants the lowest possible upfront cost and doesn't want ownership responsibilities. Which financing option fits, and would they still get net metering credit for excess production?",
+      "expected_answer": "Lease or PPA fits best for low upfront cost without ownership. Net metering eligibility isn't tied to ownership type in Meridian's documentation, so excess production would still be credited under Cascade Power & Light's net metering program, assuming the system is enrolled.",
+      "source_doc": ["financing-options.md", "utility-incentives.md"],
+      "source_section": ["Choosing Between Options — Quick Comparison", "Net Metering Policy"]
+    },
+    {
+      "id": "q28",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "If a system produces more than 120% of a home's trailing 12-month average consumption, how is the excess production billed?",
+      "expected_answer": "At the avoided-cost wholesale rate (roughly 30-40% of the retail rate) instead of the full retail net-metering credit.",
+      "source_doc": ["utility-incentives.md"],
+      "source_section": ["Net Metering Policy"]
+    },
+    {
+      "id": "q29",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "Which packages include dual inverters, and why would a system need two instead of one?",
+      "expected_answer": "The Premium and Premium+Storage packages use dual SI-8000 inverters. A single 8 kW inverter can't handle the 11.7 kW DC array within the recommended 1.1-1.25 DC-to-AC sizing ratio, so two are used.",
+      "source_doc": ["pricing-table.md", "spec-sheets.md"],
+      "source_section": ["Standard Packages table", "Inverters table notes"]
+    },
+    {
+      "id": "q30",
+      "category": "synthesis",
+      "expected_behavior": "answer",
+      "question": "What's the cheapest battery add-on, and what's its backup limitation?",
+      "expected_answer": "The PowerCell-10 at +$7,200 is the cheapest battery add-on. It's typically configured for critical-loads-only backup (fridge, lighting, select circuits), not whole-home backup.",
+      "source_doc": ["pricing-table.md", "spec-sheets.md"],
+      "source_section": ["À La Carte / Per-Watt Pricing table", "Battery Storage table notes"]
+    },
+    {
+      "id": "q31",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "What is the price of the XR-500 panel?",
+      "expected_answer": "Should decline / flag as not found. Meridian's lineup only includes the XR-400, XR-450, XR-450B, and EC-330 — there is no XR-500.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q32",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "Does Meridian offer financing through a credit union partner?",
+      "expected_answer": "Should decline. Only Brightpath Financial is named as Meridian's lending partner; no credit union is mentioned.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q33",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "What happens to a customer's banked net metering credits if they move to a different utility territory mid-contract?",
+      "expected_answer": "Should decline. This scenario isn't addressed anywhere in the documentation.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q34",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "Does the referral credit combine with the 5% full cash payment discount?",
+      "expected_answer": "Should decline or flag uncertainty. The discount is only described as 'not combinable with financing offers' — referral-credit stacking is never addressed.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q35",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "Does the XR-450 panel's warranty specifically cover hail damage?",
+      "expected_answer": "Should decline. The warranty section states duration and performance/product coverage but never names specific covered perils like hail.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q36",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "What's the total installed price for a system on a detached garage instead of the main house roof?",
+      "expected_answer": "Should decline. This scenario isn't addressed anywhere in the documentation.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q37",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "Is there a Spanish-language version of the financing agreement available?",
+      "expected_answer": "Should decline. Not mentioned anywhere in the documentation.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q38",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "How does the PowerCell-13X battery's warranty compare to a Tesla Powerwall's?",
+      "expected_answer": "Should decline. No competitor products are referenced in any source document.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q39",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "What happens to a PPA customer's rate if their utility doesn't offer net metering at all?",
+      "expected_answer": "Should decline or flag uncertainty. The PPA section notes eligibility 'depends on the customer's utility net metering policy' but never specifies the outcome when net metering isn't offered.",
+      "source_doc": [],
+      "source_section": []
+    },
+    {
+      "id": "q40",
+      "category": "refusal",
+      "expected_behavior": "refuse",
+      "question": "Do permit fees change if the installation is in a different state than where Cascade Power & Light operates?",
+      "expected_answer": "Should decline. Permit filing is described as included in the base installation, but nothing in the documentation breaks fees out by state or jurisdiction.",
+      "source_doc": [],
+      "source_section": []
+    }
+  ]
+}
