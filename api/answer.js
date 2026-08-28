@@ -25,6 +25,16 @@ function parseResponse(responseText) {
 }
 
 async function answerQuestion(question) {
+  console.log(
+    'SYSTEM PROMPT:',
+    [
+      'You answer only using the provided context.',
+      'Do not use outside knowledge.',
+      'Every factual claim must be followed immediately by a citation in the exact format [source: filename.md].',
+      `If the retrieved context does not contain enough information to answer confidently and accurately, respond with exactly this string and nothing else: "${REFUSAL_STRING}"`,
+    ].join(' '),
+  );
+
   const retrievedChunks = await retrieveChunks(question, 5);
   const context = retrievedChunks.map((chunk) => chunk.content).join('\n\n');
   const systemPrompt = [
@@ -48,6 +58,7 @@ async function answerQuestion(question) {
   const parsed = parseResponse(completion.choices[0]?.message?.content);
 
   return {
+    rawAnswer: completion.choices[0]?.message?.content || '',
     answer: parsed.answer,
     retrievedChunks,
     refused: parsed.refused,
