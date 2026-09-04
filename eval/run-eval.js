@@ -3,6 +3,7 @@ const path = require('path');
 require('dotenv').config();
 const OpenAI = require('openai');
 const { answerQuestion } = require('../api/answer');
+const { citationMatchesExpected } = require('./citation-check');
 
 function makeOpenAIClient() {
   if (!process.env.OPENAI_API_KEY) {
@@ -67,7 +68,7 @@ async function judgeAnswer({ question, expectedAnswer, actualAnswer, category })
 
 async function main() {
   const evalPath = path.join(__dirname, 'eval-set.json');
-  const outputPath = path.join(__dirname, 'eval-results.md');
+  const outputPath = path.join(__dirname, '..', 'docs', 'eval-results.md');
   const stageLabel = process.argv[2] || 'After Table Handling';
   const raw = await fs.readFile(evalPath, 'utf8');
   const data = JSON.parse(raw);
@@ -124,9 +125,8 @@ async function main() {
       if (!result.refused) {
         const expectedDocs = Array.isArray(item.source_doc) ? item.source_doc : [];
         const retrievedDocs = result.retrievedChunks.map((chunk) => chunk.source_doc);
-        const citedDocs = Array.isArray(result.citedSources) ? result.citedSources : [];
         const sourceHit = retrievedDocs.some((doc) => expectedDocs.includes(doc));
-        const citationHit = citedDocs.some((doc) => expectedDocs.includes(doc));
+        const citationHit = citationMatchesExpected(result.rawAnswer, expectedDocs);
 
         if (sourceHit) {
           categoryStats.recallAt5 += 1;
@@ -164,7 +164,9 @@ async function main() {
   const summaryLines = [
     `## ${stageLabel}`,
     '',
-    `Run date: 2026-08-28`,
+    `Run date: ${new Date().toISOString()}`,
+    `Git commit: ${process.env.EVAL_GIT_COMMIT || 'not provided'}`,
+    `Deployment: ${process.env.EVAL_DEPLOYMENT_URL || 'live backend via configured production environment'}`,
     '',
     '| Metric | Value |',
     '|---|---:|',
@@ -185,11 +187,8 @@ async function main() {
   ];
 
   const summary = summaryLines.join('\n');
-  const existing = await fs
-    .readFile(outputPath, 'utf8')
-    .catch(() => '');
-  const nextContent = existing ? `${existing.trimEnd()}\n\n${summary}` : summary;
-  await fs.writeFile(outputPath, `${nextContent}\n`, 'utf8');
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+  await fs.writeFile(outputPath, `${summary}\n`, 'utf8');
 
   console.log(summary);
 }
